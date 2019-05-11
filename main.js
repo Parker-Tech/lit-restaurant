@@ -25,15 +25,19 @@ var customers = [{
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/index.html")); //put our html pages in here
+
+
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "index.html")); //put our html pages in here
 });
 
-app.get("/reservations", function (req, res) {
-  res.sendFile(path.join(__dirname, "/table.html"));
+app.get("/reservations", function(req, res) {
+  res.sendFile(path.join(__dirname, "table.html"));
+
 });
 
-// Displays all characters
+// Displays all customers
+
 app.get("/api/customers", function (req, res) {
   return res.json(customers);
 });
@@ -51,7 +55,12 @@ app.get("/api/customers/:customer", function (req, res) {
   }
   return res.json(false);
 });
+
+
+
+
 app.post("/api/customers", function (req, res) {
+
   // req.body hosts is equal to the JSON post sent from the user
   // This works because of our body parsing middleware
   var newCustomer = req.body;
@@ -61,7 +70,7 @@ app.post("/api/customers", function (req, res) {
 
   console.log(newCustomer);
 
-  characters.push(newCustomer);
+  customers.push(newCustomer);
 
   res.json(newCustomer);
 });
