@@ -13,6 +13,8 @@ app.use(express.urlencoded({
   extended: true
 }));
 app.use(express.json());
+//allows us to serve static files
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 var customers = [{
   routeName: "justinp",
@@ -28,11 +30,11 @@ var customers = [{
 
 
 app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "index.html")); //put our html pages in here
+  res.sendFile(path.join(__dirname, "/public/index.html")); //put our html pages in here
 });
 
 app.get("/reservations", function(req, res) {
-  res.sendFile(path.join(__dirname, "table.html"));
+  res.sendFile(path.join(__dirname, "/public/table.html"));
 
 });
 
