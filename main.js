@@ -9,22 +9,23 @@ var app = express();
 var PORT = 3000;
 
 // Sets up the Express app to handle data parsing
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({
+  extended: true
+}));
 app.use(express.json());
 
-var customers = [
-  {
-    routeName: "justinp",
-    name: "Justin Parker",
-    phoneNumber: "900-200-3000",
-    email: "whatever@gmail.com"
-  }
-];
+var customers = [{
+  routeName: "justinp",
+  name: "Justin Parker",
+  phoneNumber: "900-200-3000",
+  email: "whatever@gmail.com"
+}];
 
 // Routes
 // =============================================================
 
 // Basic route that sends the user first to the AJAX Page
+
 
 app.get("/", function(req, res) {
   res.sendFile(path.join(__dirname, "index.html")); //put our html pages in here
@@ -36,6 +37,7 @@ app.get("/reservations", function(req, res) {
 });
 
 // Displays all customers
+
 app.get("/api/customers", function (req, res) {
   return res.json(customers);
 });
@@ -56,6 +58,7 @@ app.get("/api/customers/:customer", function (req, res) {
 
 
 
+
 app.post("/api/customers", function (req, res) {
 
   // req.body hosts is equal to the JSON post sent from the user
@@ -71,6 +74,7 @@ app.post("/api/customers", function (req, res) {
 
   res.json(newCustomer);
 });
+
 
 // Starts the server to begin listening
 // =============================================================
