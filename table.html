@@ -41,24 +41,24 @@
         <div class="modal-body mx-3">
           <div class="md-form mb-5">
             <i class="fas fa-user prefix grey-text"></i>
-            <input type="text" id="orangeForm-name" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="orangeForm-name">Your name</label>
+            <input type="text" id="name" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="name">Your name</label>
           </div>
           <div class="md-form mb-5">
             <i class="fas fa-envelope prefix grey-text"></i>
-            <input type="email" id="orangeForm-email" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="orangeForm-email">Your Phone</label>
+            <input type="email" id="phone" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="phone">Your Phone</label>
           </div>
 
           <div class="md-form mb-4">
             <i class="fas fa-lock prefix grey-text"></i>
-            <input type="email" id="orangeForm-pass" class="form-control validate">
-            <label data-error="wrong" data-success="right" for="orangeForm-pass">Your Email</label>
+            <input type="email" id="email" class="form-control validate">
+            <label data-error="wrong" data-success="right" for="email">Your Email</label>
           </div>
 
         </div>
         <div class="modal-footer d-flex justify-content-center">
-          <button class="btn btn-deep-orange">Reserve</button>
+          <button type="submit" id="add-btn" class="btn btn-deep-orange">Reserve</button>
         </div>
       </div>
     </div>
@@ -73,9 +73,9 @@
     </div>
     <div class="card-body">
       <div id="stats">
-        <h3><strong>Name:</strong> <span id="name">Dan</span></h3>
-        <h3><strong>Phone:</strong> <span id="phone">955-304-0098</span></h3>
-        <h3><strong>Email:</strong> <span id="email">dan@gmail.com</span></h3>
+        <h3><strong>Name:</strong> Dan</h3>
+        <h3><strong>Phone:</strong> 955-304-0098</h3>
+        <h3><strong>Email:</strong> dan@gmail.com</h3>
 
 
       </div>
@@ -96,15 +96,32 @@
   </div>
   </div>
   <script src="" async defer></script>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
     crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+    // Question: What does this code do?
+    $("#add-btn").on("click", function(event) {
+      event.preventDefault();
+      var newCustomer = {
+        name: $("#name").val().trim(),
+        phone: $("#phone").val().trim(),
+        email: $("#email").val().trim(),
+      };
+
+      // Question: What does this code do??
+      $.post("/api/customers", newCustomer)
+        .then(function(data) {
+          console.log("table.html", data);
+          alert("Adding customer...");
+        });
+    });
+  </script>
 </body>
 
 </html>
