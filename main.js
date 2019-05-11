@@ -26,11 +26,11 @@ var customers = [{
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/index.html")); //put our html pages in here
+  res.sendFile(path.join(__dirname, "/index.html")); //put our html pages in here
 });
 
 app.get("/reservations", function (req, res) {
-  res.sendFile(path.join(__dirname, "/public/table.html"));
+  res.sendFile(path.join(__dirname, "/table.html"));
 });
 
 // Displays all characters
@@ -65,6 +65,7 @@ app.post("/api/customers", function (req, res) {
 
   res.json(newCustomer);
 });
+
 
 // Starts the server to begin listening
 // =============================================================
