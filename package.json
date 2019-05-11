@@ -1,16 +1,14 @@
 {
-  "name": "day3",
+  "name": "classwork",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4",
-    "mysql": "^2.17.1"
+    "express": "^4.16.4"
   }
 }
